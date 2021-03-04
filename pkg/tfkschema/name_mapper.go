@@ -90,6 +90,21 @@ func NormalizeTerraformName(s string, toSingular bool, path string) string {
 		if strings.Contains(path, "kubernetes_service.spec") {
 			return "external_ips"
 		}
+
+	case "allowedHostPaths":
+		if strings.Contains(path, "kubernetes_pod_security_policy.spec") {
+			return "allowed_host_paths"
+		}
+
+	case "hostPorts":
+		if strings.Contains(path, "kubernetes_pod_security_policy.spec") {
+			return "host_ports"
+		}
+
+	case "supplementalGroups":
+		if strings.Contains(path, "kubernetes_pod_security_policy.spec") {
+			return "supplemental_groups"
+		}
 	}
 
 	if toSingular {
